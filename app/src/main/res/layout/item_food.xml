@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_50"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/shape_rounded_rectangle_white">
+
+        <ImageView
+            android:id="@+id/ivFood"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/shape_rounded_rectangle_top_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Food Name"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/helvetica"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivFood" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Description"
+            android:fontFamily="@font/helvetica"
+            app:layout_constraintStart_toStartOf="@+id/tvFoodName"
+            app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
+
+        <TextView
+            android:id="@+id/tvIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grain, Salt"
+            android:fontFamily="@font/helvetica"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
+            app:layout_constraintStart_toStartOf="@+id/tvFoodName"
+            app:layout_constraintTop_toTopOf="@+id/btnAdd" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/selector_button"
+            android:gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="45 USD"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/helvetica"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

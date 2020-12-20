@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DinDinn Assignment</string>
+    <string-array name="promo_images">
+        <item>image_promotion</item>
+        <item>image_promotion</item>
+        <item>image_promotion</item>
+    </string-array>
+</resources>
