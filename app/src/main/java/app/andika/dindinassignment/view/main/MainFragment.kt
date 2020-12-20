@@ -47,17 +47,6 @@ class MainFragment : BaseMvRxFragment() {
     }
 
     override fun invalidate() {
-        withState(mainViewModel) {
-
-        }
-    }
-
-    private fun showLoader() {
-
-    }
-
-    private fun showError() {
-
     }
 
     fun setPromoViewPager() {

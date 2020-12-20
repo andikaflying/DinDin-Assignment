@@ -90,24 +90,6 @@ class MainRepository {
                             10,
                             DRINKS
                     )
-//                    Food(
-//                            9,
-//                            "Pepsi",
-//                            "Pepsi",
-//                            "https://cdn.productreview.com.au/resize/listing-picture/be9517eb-a8c2-398a-a065-b14b8b85c02a?width=170&height=170&dpr=2&v=2",
-//                            "80 gr, 5 cm",
-//                            11,
-//                            DRINKS
-//                    ),
-//                    Food(
-//                            10,
-//                            "Miranda",
-//                            "Miranda",
-//                            "https://images-na.ssl-images-amazon.com/images/I/61Vx5c69QyL._SX425_.jpg",
-//                            "50 gr, 5 cm",
-//                            10,
-//                            DRINKS
-//                    )
             ))
         }
 

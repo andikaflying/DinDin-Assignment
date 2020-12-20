@@ -44,12 +44,10 @@ class MainViewModel (initialState: MainState, private val mainRepository: MainRe
 
                     val amount = newOrderList.count { it.isDeleted == false }
                     cartSize.postValue(amount)
-                    Log.e(TAG, "Cart size amount = " + amount)
-                    Log.e(TAG, "saveCart - cart size = " + newOrderList.size)
 
                     copy(orderList = newOrderList)
                 } else if (it is Fail) {
-                    errorMessage.postValue("Failed to add movie to watchlist")
+                    errorMessage.postValue("Failed to add food to cart")
                     copy()
                 } else {
                     copy()
@@ -66,8 +64,6 @@ class MainViewModel (initialState: MainState, private val mainRepository: MainRe
 
                 mainRepository.removeFoodFromCart(index, cartId).execute {
                     if (it is Success) {
-                        Log.e(TAG, "removeFoodFromCart success")
-                        Log.e(TAG, "Is deleted = " + it.invoke().isDeleted)
                         val newOrderList = orderList.toMutableList().apply {
                             set(index, it.invoke())
                         }
@@ -75,7 +71,7 @@ class MainViewModel (initialState: MainState, private val mainRepository: MainRe
 
                         copy(orderList = newOrderList)
                     } else if (it is Fail) {
-                        errorMessage.postValue("Failed to add movie to watchlist")
+                        errorMessage.postValue("Failed to remove food from cart")
                         copy()
                     } else {
                         copy()
@@ -86,60 +82,32 @@ class MainViewModel (initialState: MainState, private val mainRepository: MainRe
 
     fun saveCart(activity: Activity) {
         withState {
-            Log.e(TAG, "Shared Preferences - save list size = " + it.orderList.size)
             SharedPreferencesManager.saveArrayList(it.orderList, CART, activity)
         }
     }
 
-    //        setState {
-//            copy(orderList = mutableListOf())
-//        }
-
-    //        withState {
-//            it -> Log.e(TAG, "retrieveCart - state size = " + it.orderList.size)
-//            mainRepository.getBoughtItemList(activity).execute {
-//                val result = it.invoke()
-//                if (result != null) {
-//
-//                    calculateTotalPrice(result)
-//                    val amount = result.count { it.isDeleted == false }
-//                    Log.e(TAG, "retrieveCart - Amount = " + amount)
-//                    cartSize.postValue(amount)
-//                    copy(orderList = result)
-//                } else {
-//                    Log.e(TAG, "retrieveCart - pusing masuk else !!!!")
-//                    copy(orderList = mutableListOf())
-//                }
-//            }
-//        }
     fun retrieveCart(activity: Activity) {
         if (SharedPreferencesManager.isExist(CART, activity)) {
-            Log.e(TAG, "Shared Preferences - get list = true")
             var list = SharedPreferencesManager.getArrayList(CART, activity)!!
             calculateTotalPrice(list)
             val amount = list.count { it.isDeleted == false }
-            Log.e(TAG, "Amount = " + amount)
 
             cartSize.postValue(amount)
-
             setState {
                 copy(orderList = list)
             }
-        } else {
-            Log.e(TAG, "Shared Preferences - get list = false")
         }
     }
 
     fun calculateTotalPrice(boughtItemList : List<BoughtItem>) {
         var total: Int = 0
-        Log.e(TAG, "Total Item = " + boughtItemList.size)
+
         for (item : BoughtItem in boughtItemList) {
             if (!item.isDeleted) {
                 total = item.foodPrice * item.total + total
             }
         }
 
-        Log.e(TAG, "Total Price = " + total)
         totalPrice.postValue(total)
     }
 

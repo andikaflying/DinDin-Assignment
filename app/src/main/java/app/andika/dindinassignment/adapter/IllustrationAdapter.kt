@@ -24,7 +24,6 @@ class IllustrationAdapter(
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(context)
-        Log.e("Test", "Image name = " + imageFileName[position])
         val resImage = context.resources.getIdentifier(imageFileName[position], "drawable", context.packageName)
 
         imageView.setBackground(context.resources.getDrawable(resImage, null))

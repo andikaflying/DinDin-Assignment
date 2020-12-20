@@ -27,22 +27,16 @@ class FoodFragment : BaseMvRxFragment() {
     private lateinit var foodType: String
 
     override fun invalidate() {
-        Log.e(TAG, "Invalidate")
         if (foodAdapter.itemCount == 0) {
-            Log.e(TAG, "size nya 0")
             withState(mainViewModel) { state ->
                 when (state.foodList) {
-                    is Loading -> {
-//                    showLoader()
-                    }
                     is Success -> {
                         val foodList = state.foodList.invoke().filter { it.type == foodType }
                         showFoods(foodList)
                     }
-                    is Fail -> {
-//                    showError()
+                    Uninitialized -> {
+
                     }
-                    Uninitialized -> TODO()
                 }
             }
         }

@@ -15,14 +15,6 @@ class FoodListPagerAdapter(fm: FragmentManager?, private val context: Context) :
 
     override fun getItem(position: Int): Fragment {
         return FoodFragment.newInstance(position + 1)
-//            FoodFragment.newInstance(position + 1)
-//        } else if (position == 1) {
-//            SushiFragment()
-//        } else if (position == 2) {
-//            DrinksFragment()
-//        } else {
-//            PizzaFragment()
-//        }
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
