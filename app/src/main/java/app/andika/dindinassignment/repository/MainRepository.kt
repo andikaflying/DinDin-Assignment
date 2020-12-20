@@ -8,6 +8,7 @@ import app.andika.dindinassignment.model.Food
 import app.andika.dindinassignment.utilities.*
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 
 class MainRepository {
     private val TAG = MainRepository::class.java.name
@@ -99,12 +100,13 @@ class MainRepository {
     fun addFoodToCart(foodId: Long): Observable<BoughtItem> {
         return Observable.fromCallable {
             val food = foodList.first { food -> food.id == foodId }
-            val boughtItem = BoughtItem(GENERATED_ID, food.id, food.name, food.imageURL, food.price, 1, CART, false)
+            val id = ID_GENERATOR.getAndIncrement().toLong()
+
+            val boughtItem = BoughtItem(id, food.id, food.name, food.imageURL, food.price, 1, CART, false)
 
             itemBoughtList.apply {
                 add(boughtItem)
             }
-            GENERATED_ID = GENERATED_ID + 1
             boughtItem
         }.subscribeOn(Schedulers.io())
     }
